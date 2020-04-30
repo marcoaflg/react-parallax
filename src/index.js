@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import { render } from "react-dom";
+import { Parallax } from "react-parallax";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const styles = {
+  fontFamily: "sans-serif",
+  textAlign: "center",
+};
+
+const insideStyles = {
+  background: "white",
+  padding: 20,
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%,-50%)"
+};
+
+const imagem ="https://static.vecteezy.com/system/resources/previews/000/151/791/original/falling-numbers-matrix-background-vector.jpg";
+
+const App = () => (
+  <div style={styles}>
+    <Parallax bgImage={imagem} strength={500}>
+      <div style={{ height: 500 }}>
+        <div style={insideStyles}>Efeito Parallax</div>
+      </div>
+    </Parallax>
+
+    <div style={{ height: 500 }} />
+  </div>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+render(<App />, document.getElementById("root"));
